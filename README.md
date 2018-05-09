@@ -77,7 +77,7 @@ For this particular use case I will just need to create one humilis environment 
 
 Otherwise the other solution would be to use Terraform. I don't have a strong opinion on which one to use as both of them would do the job pretty well, but from our experience Humilis tends to be more flexible.
 
-[6]: https://github.com/humilis/humilis
+[6]: http://blog.findhotel.net/2018/05/managing-aws-infrastructures-our-own-way/
 
 ##### Indexing:
 Here I will use a one language per document [approach][7]: each index will contain all the data of a particular language. Then I will spread the data to those different indices depending on the country of origin of the request, the user's selected language or the HTTP header "accept-language". Another solution to spread the data but more complicated would be to add some code to identify the language from the content of the data.  
