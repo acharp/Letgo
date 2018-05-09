@@ -72,12 +72,13 @@ Perhaps a more performant and simpler solution would be querying directly the El
 - Available as an AWS service.
 
 ##### Deployment:
-To deploy this architecture I will use [Humilis][6], it is an open-source tool we develop at FindHotel to ease the management of our AWS infrastructures. It is built on top of AWS CloudFormation but adds a more friendly syntax, templating capabilities and some other features. We use it for almost all of our projects in the Data Sciences and Engineering team, it allows us to reuse code and deploy the same pieces of infrastructure across different projects.  
+To deploy this architecture I will use [Humilis][6], it is an open-source tool ([project available here][extra]) we develop at FindHotel to ease the management of our AWS infrastructures. It is built on top of AWS CloudFormation but adds a more friendly syntax, templating capabilities and some other features. We use it for almost all of our projects in the Data Sciences and Engineering team, it allows us to reuse code and deploy the same pieces of infrastructure across different projects.  
 For this particular use case I will just need to create one humilis environment file containing 4 humilis layers: API Gateway ; VPC, security group and IAM policies ; Elastic Beanstalk ; ElasticSearch. And deploy thanks to one CLI command.
 
 Otherwise the other solution would be to use Terraform. I don't have a strong opinion on which one to use as both of them would do the job pretty well, but from our experience Humilis tends to be more flexible.
 
 [6]: http://blog.findhotel.net/2018/05/managing-aws-infrastructures-our-own-way/
+[extra]: https://github.com/humilis/humilis
 
 ##### Indexing:
 Here I will use a one language per document [approach][7]: each index will contain all the data of a particular language. Then I will spread the data to those different indices depending on the country of origin of the request, the user's selected language or the HTTP header "accept-language". Another solution to spread the data but more complicated would be to add some code to identify the language from the content of the data.  
